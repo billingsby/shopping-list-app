@@ -47,18 +47,20 @@ $('.show-list-style').click(function() {
         $.contextMenu({
             selector: 'li', 
             callback: function(key, options) {
-                // var m = "clicked: " + key;
-                // window.console && console.log(m) || alert(m); 
+              
                 if (key=='delete') {
                   $(this).remove();
                 }
                 if (key == 'edit') {
-                 
-                  $(this).find('.item').text("");
-                  $("<input type='text'>").appendTo(this.find('.item')).focus();
+                  var editItem = $(this.find('.item'));
+                  console.log(editItem);
+                  $('editItem').text("");
+                  $("<input type='text'>").appendTo('editItem').focus();
                   $(this).keyup(function (e) {
                   if (e.which == 13) {
-                    $(this).appendTo(this.find('.item')).text($("<input type='text'>").val());
+                    var change = $('editItem').val(); 
+                    console.log(change);
+                    $('change').appendTo(editItem);
                     $(this).blur();
                     
     // $(this).append('<li class=\"list-item\"> <input class=\"checkbox\" type=\"checkbox\" value=\"None\" id=\"' + $(this).val() + '\" name=\"check\"/> <label for=\"' + $(this).val() + '\"></label><h3 class=\"item\">' +
