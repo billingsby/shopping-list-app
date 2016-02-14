@@ -42,12 +42,47 @@ $('.show-list-style').click(function() {
 });
 
 
-// $( "p" ).click(function() {
-//   $( this ).slideUp();
-// });
+// Right-click menu
+ $(function() {
+        $.contextMenu({
+            selector: 'li', 
+            callback: function(key, options) {
+                // var m = "clicked: " + key;
+                // window.console && console.log(m) || alert(m); 
+                if (key=='delete') {
+                  $(this).remove();
+                }
+                if (key == 'edit') {
+                 
+                  $(this).find('.item').text("");
+                  $("<input type='text'>").appendTo(this.find('.item')).focus();
+                  $(this).keyup(function (e) {
+                  if (e.which == 13) {
+                    $(this).appendTo(this.find('.item')).text($("<input type='text'>").val());
+                    $(this).blur();
+                    
+    // $(this).append('<li class=\"list-item\"> <input class=\"checkbox\" type=\"checkbox\" value=\"None\" id=\"' + $(this).val() + '\" name=\"check\"/> <label for=\"' + $(this).val() + '\"></label><h3 class=\"item\">' +
+    // $(this).val() + '</h3></li>');  
+  }
+});
+                }
+            },
+            
 
+            items: {
+                "edit": {name: "Edit", icon: "edit"},
+                "cut": {name: "Cut", icon: "cut"},
+               copy: {name: "Copy", icon: "copy"},
+                "paste": {name: "Paste", icon: "paste"},
+                "delete": {name: "Delete", icon: "delete"},
+                
+            }
+        });
 
-// .removeAttr('checked')
+        $('.context-menu-one').on('click', function(e){
+            console.log('clicked', this);
+        })
+           });    
 
 
 })();
