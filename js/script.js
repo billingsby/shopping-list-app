@@ -19,7 +19,6 @@ $('.add-item').keyup(function (e) {
 // Checked items move to checked list
 
 $('.item-list').on('click', '.checkbox', function() {
-    console.log('clicked');
     $(this).
       attr('checked','checked').
       closest('.list-item').removeClass('list-item').addClass('list-item-checked').prependTo($('.checked-list'));
@@ -48,43 +47,53 @@ $('.show-list-style').click(function() {
             selector: 'li', 
             callback: function(key, options) {
               
+                if (key=='quit') {
+                  $(this).
+                  closest('.list-item').removeClass('list-item')
+                  .addClass('list-item-checked').prependTo($('.checked-list'));
+                var checkbox = $(this.find('.checkbox'));
+                $(checkbox).prop('checked',true);
+                }
+
+
                 if (key=='delete') {
                   $(this).remove();
                 }
+
                 if (key == 'edit') {
+                  // Change li item to input field
                   var editItem = $(this.find('.item'));
                   console.log(editItem);
-                  $('editItem').text("");
-                  $("<input type='text'>").appendTo('editItem').focus();
+                  $(editItem).text("");
+                  var input = $("<input type='text'>");
+                  $(input).appendTo(editItem).focus();
+                  
+                  // Finish when enter is pressed
                   $(this).keyup(function (e) {
                   if (e.which == 13) {
-                    var change = $('editItem').val(); 
+                    var change = $(input).val(); 
                     console.log(change);
-                    $('change').appendTo(editItem);
+                    $(editItem).append(change);
+                    $(input).remove(); //remove input field
                     $(this).blur();
-                    
-    // $(this).append('<li class=\"list-item\"> <input class=\"checkbox\" type=\"checkbox\" value=\"None\" id=\"' + $(this).val() + '\" name=\"check\"/> <label for=\"' + $(this).val() + '\"></label><h3 class=\"item\">' +
-    // $(this).val() + '</h3></li>');  
-  }
-});
+                    change = null;
+                    console.log(change);
+                    }
+                  });
                 }
             },
-            
 
             items: {
+                "quit": {name: "Mark as checked", icon: "quit"},
                 "edit": {name: "Edit", icon: "edit"},
-                "cut": {name: "Cut", icon: "cut"},
-               copy: {name: "Copy", icon: "copy"},
-                "paste": {name: "Paste", icon: "paste"},
-                "delete": {name: "Delete", icon: "delete"},
-                
+                "delete": {name: "Delete", icon: "delete"}
             }
         });
 
         $('.context-menu-one').on('click', function(e){
             console.log('clicked', this);
         })
-           });    
+  });    
 
 
 })();
