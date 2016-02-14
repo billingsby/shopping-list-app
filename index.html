@@ -19,33 +19,16 @@
   <section class="list">
     <div class="content">
       <div class="new-item">
-        <h3 class="add-item">+ Add an item...</h3>
+        <input class="add-item" id="add-item" type="text" value="+ Add an item..." >
       </div>
-      <div class="list-item">
-        <input type="checkbox" value="None" id="box" name="check"  />
-        <label for="box"></label>
-        <h3 class="item">Item 1</h3>
-      </div>
-      <div class="list-item">
-        <input type="checkbox" value="None" id="box" name="check"  />
-        <label for="box"></label>
-        <h3 class="item">Item 2</h3>
-      </div>
-      <div class="list-item">
-        <input type="checkbox" value="None" id="box" name="check"  />
-        <label for="box"></label>
-        <h3 class="item">Item 3</h3>
-      </div>
-      <div class="list-item">
-        <input type="checkbox" value="None" id="box" name="check"  />
-        <label for="box"></label>
-        <h3 class="item">Item 4</h3>
-      </div>
-      <div class="list-item">
-        <input type="checkbox" value="None" id="box" name="check"  />
-        <label for="box"></label>
-        <h3 class="item">Item 5</h3>
-      </div>
+
+      <ul class="item-list">
+        <li class="list-item">
+          <input type="checkbox" value="None" id="box" name="check" />
+          <label for="box"></label>
+          <h3 class="item">Item 1</h3>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -57,19 +40,17 @@
 
   <section class="checked-items">
     <div class="content">
-      <div class="list-item-checked">
-        <input type="checkbox" value="None" id="box" name="check" checked />
-        <label for="box"></label>
-        <h3 class="item">Item 6</h3>
-      </div>
-      <div class="list-item-checked">
-        <input type="checkbox" value="None" id="box" name="check" checked />
-        <label for="box"></label>
-        <h3 class="item">Item 7</h3>
-      </div>
+      <ul class="checked-list">
+        <li class="list-item-checked">
+          <input type="checkbox" value="None" id="box2" name="check" checked />
+          <label for="box2"></label>
+          <h3 class="item">Item 6</h3>
+        </li>
+      
+      </ul>
     </div>
   </section>
-
+  <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
