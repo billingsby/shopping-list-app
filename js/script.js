@@ -73,7 +73,7 @@ $('.show-list-style').click(function() {
                   if (e.which == 13) {
                     var change = $(input).val(); 
                     console.log(change);
-                    $(editItem).append(change);
+                    $(editItem).text(change);
                     $(input).remove(); //remove input field
                     $(this).blur();
                     change = null;
