@@ -1,4 +1,4 @@
-(function(){
+$(document).ready(function(){
  
  //Clears text input when clicked 
  $('.add-item').click(function() {
